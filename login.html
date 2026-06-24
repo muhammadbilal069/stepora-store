@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamp Pull Login</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+
+       * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-page-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #050505;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center me rakha hai taaki control asaan ho */
+    overflow: hidden;
+    transition: background 0.6s ease;
+}
+
+.login-page-section.light-on {
+    background: #0b0c10;
+}
+
+/* Lamp Base & Chain */
+.lamp-base {
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 20px;
+    background: #222;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index: 101;
+    box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.chain-wrapper {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    z-index: 100;
+    padding: 0 10px;
+}
+
+.string {
+    width: 3px;
+    height: 150px; 
+    background: linear-gradient(#333, #888, #333);
+    margin: 0 auto;
+    transition: height 0.2s;
+}
+
+.handle {
+    width: 15px;
+    height: 35px;
+    background: #6a8d55;
+    border-radius: 10px;
+    margin: -5px auto 0;
+    box-shadow: 0 0 15px rgba(106, 141, 85, 0.4);
+}
+
+.login-card {
+    width: 380px;
+    background: #11141a;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(106, 141, 85, 0.4);
+    text-align: center;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100px); 
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7);
+}
+
+.login-page-section.light-on .login-card {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(30px);
+}
+
+/* Lamp Glow */
+.lamp-glow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 180, 0.15) 0%, transparent 70%);
+    display: none;
+    pointer-events: none;
+}
+
+.login-page-section.light-on .lamp-glow {
+    display: block;
+}
+
+/* Inputs & Buttons */
+.login-card h2 { color: #fff; margin-bottom: 25px; }
+.input-group { margin-bottom: 20px; }
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #2d343f;
+    background: #1a1e26;
+    color: #fff;
+    border-radius: 10px;
+    outline: none;
+}
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    background: #6a8d55;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* SweetAlert ko aapki theme se match karne ke liye */
+.my-custom-popup {
+    border: 1px solid rgba(106, 141, 85, 0.4) !important;
+    border-radius: 20px !important;
+}
+
+
+/* --- Media Queries --- */
+
+@media (max-width: 480px) {
+    .login-card {
+        width: 90%;
+        padding: 30px 20px;
+    }
+    
+    .string {
+        height: 100px; 
+    }
+
+    .login-page-section.light-on .login-card {
+        transform: translateY(50px);
+    }
+}
+
+/* Landscape fix taaki scroll na aaye */
+@media (max-height: 550px) {
+    .login-page-section {
+        align-items: flex-start;
+        padding-top: 120px;
+        overflow-y: auto;
+    }
+    .string { height: 60px; }
+}
+    </style>
+
+
+</head>
+<body>
+
+    <div class="login-page-section" id="loginArea">
+        <div class="lamp-base"></div>
+
+        <div class="chain-wrapper" id="pull-chain">
+            <div class="string" id="string"></div>
+            <div class="handle"></div>
+        </div>
+
+        <div class="login-card">
+            <div class="lamp-glow"></div>
+            <h2>Sign In</h2>
+            <div class="input-group">
+                <input type="text" id="lemail" placeholder="UserEmail" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="lpassword" placeholder="Password" required>
+            </div>
+            <button class="login-btn" id="loginBtn">Login Now</button>
+            <p style="margin-top: 15px; font-size: 13px; color: #666;">
+                New here? <a href="signup.html" style="color: #6a8d55; text-decoration: none;">Create Account</a>
+            </p>
+        </div>
+    </div>
+
+    <script type="module" src="login.js"></script>
+
+</body>
+
+</html>

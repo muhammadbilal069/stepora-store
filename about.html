@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Stepora</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0b0c10;
+            /* THEME FIXED: Pure Dark Background */
+            color: #fff;
+            /* THEME FIXED: White Text */
+            overflow-x: hidden;
+        }
+
+        /* BUTTONS */
+        .main-btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 15px 35px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        /* 1. HERO SECTION */
+        .hero-banner {
+            position: relative;
+            /* height: 100vh; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #0b0c10;
+            color: #fff;
+            text-align: center;
+        }
+
+        .hero-banner {
+            height: auto;
+            min-height: 100vh;
+            padding: 100px 0;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #11141a 0%, #0b0c10 100%);
+            /* THEME FIXED: Dark Gradient */
+            opacity: 1;
+        }
+
+        .hero-box {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            padding: 0 20px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .hero-box h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .hero-box h1 span {
+            color: #6a8d55;
+            /* THEME FIXED: Brand Green */
+        }
+
+        .hero-box p {
+            font-size: 1.25rem;
+            color: #d1d5db;
+            margin-bottom: 35px;
+        }
+
+        .hero-link {
+            background-color: #6a8d55;
+            /* THEME FIXED: Green Button */
+            color: #fff;
+        }
+
+        .hero-link:hover {
+            background-color: #84af6d;
+            /* Light Green Hover */
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(106, 141, 85, 0.4);
+        }
+
+        /* 2. STORY SECTION */
+        .about-story {
+            padding: 80px 0;
+            background-color: #0b0c10;
+        }
+
+        .about-grid {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
+        }
+
+        .story-text {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .story-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+            color: #fff;
+        }
+
+        .story-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: #6a8d55;
+            /* THEME FIXED: Green Line */
+        }
+
+        .story-text p {
+            color: #9ca3af;
+            /* Light text for readability on dark background */
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .about-image {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(106, 141, 85, 0.2);
+            /* THEME FIXED: Subtle Green Border */
+        }
+
+        /* 3. VALUES SECTION */
+        .brand-values {
+            padding: 80px 0;
+            background-color: #11141a;
+            /* THEME FIXED: Secondary Dark Box */
+        }
+
+        .page-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .heading-area {
+            text-align: center;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .heading-area h2 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #6a8d55;
+            /* THEME FIXED: Green Subheading */
+        }
+
+        .heading-area p {
+            color: #9ca3af;
+            margin-top: 10px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            height: 250px;
+            perspective: 1000px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+        }
+
+        .value-card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .card-front {
+            background-color: #1a1e26;
+            /* THEME FIXED: Dark Card Front */
+            border-bottom: 4px solid #6a8d55;
+            /* THEME FIXED: Green Bottom Border */
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card-front i {
+            font-size: 2.5rem;
+            color: #6a8d55;
+            /* THEME FIXED: Green Icons */
+            margin-bottom: 15px;
+        }
+
+        .card-front h3 {
+            color: #fff;
+        }
+
+        .card-back {
+            background-color: #0b0c10;
+            /* THEME FIXED: Dark Card Back */
+            color: #fff;
+            transform: rotateY(180deg);
+            border: 1px solid rgba(106, 141, 85, 0.3);
+        }
+
+        .card-back h3 {
+            color: #6a8d55;
+            /* THEME FIXED: Green Text */
+            margin-bottom: 10px;
+        }
+
+        .card-back p {
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+
+        /* 4. TIMELINE SECTION */
+        .process-section {
+            padding: 80px 0;
+            background-color: #0b0c10;
+        }
+
+        .timeline-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .timeline-track {
+            border-left: 2px solid #6a8d55;
+            /* THEME FIXED: Green Track Line */
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .timeline-block {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -11px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background-color: #6a8d55;
+            /* THEME FIXED: Green Timeline Dots */
+            border: 4px solid #0b0c10;
+            /* Matches Body */
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(106, 141, 85, 0.5);
+        }
+
+        .timeline-block h3 {
+            font-size: 1.25rem;
+            color: #fff;
+            /* THEME FIXED: White Title */
+        }
+
+        .timeline-block p {
+            color: #9ca3af;
+            margin-top: 5px;
+        }
+
+        /* 5. CTA SECTION */
+        .footer-cta {
+            background-color: #11141a;
+            /* THEME FIXED: Dark Premium CTA */
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: -83px;
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .cta-content {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .footer-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .footer-cta p {
+            color: #9ca3af;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-btn {
+            background-color: #6a8d55;
+            /* THEME FIXED: Green Button */
+            color: #fff;
+            font-weight: 900;
+        }
+
+        .cta-btn:hover {
+            background-color: #84af6d;
+            transform: scale(1.05);
+            box-shadow: 0 5px 25px rgba(106, 141, 85, 0.4);
+        }
+
+        /* GLOBAL ACTIVATION CLASS FOR JAVASCRIPT */
+        .show {
+            opacity: 1 !important;
+            transform: translate(0) !important;
+        }
+
+
+        @media (max-width: 768px) {
+
+            .hero-box h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-box p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .hero-box h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-box p {
+                font-size: 0.95rem;
+            }
+        }
+
+        .about-grid,
+        .card-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page-wrapper,
+        .about-grid {
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <span id="welcome-msg"></span>
+    </div>
+
+
+
+    <nav class="navbar">
+        <div class="logo">
+            <h2>Step<span>ora</span><span style="color: #6a8d55;">.</span></h2>
+        </div>
+
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li>
+                <a href="cart.html" class="cart-icon-wrapper">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-count">0</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="nav-buttons">
+            <a href="login.html" class="login" id="loginBtn">
+                <i class="fa-solid fa-user"></i> Login
+            </a>
+
+            <a href="signup.html" class="signup-btn" id="signupBtn">
+                Sign Up
+            </a>
+
+            <a href="dashboard.html" class="dashboard-btn" id="dashboardBtn" style="display:none;">
+                Dashboard
+            </a>
+
+            <a href="#" class="logout-btn" id="logoutBtn" style="display:none;">
+                Logout
+            </a>
+
+        </div>
+    </nav>
+
+
+
+    <!-- side bar code  -->
+
+    <div class="mobile-sidebar" id="mobileSidebar">
+
+        <div class="sidebar-header">
+            <h2>Step<span>ora</span></h2>
+
+            <i class="fa-solid fa-xmark" id="closeMenu"></i>
+        </div>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+
+            <li>
+                <a href="cart.html" class="cart-icon-wrapper">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Cart <span id="mobile-cart-count">0</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="sidebar-buttons">
+
+            <a href="login.html" class="login" id="mobileLoginBtn">
+                <i class="fa-solid fa-user"></i> Login
+            </a>
+
+            <a href="signup.html" class="signup-btn" id="mobileSignupBtn">
+                Sign Up
+            </a>
+
+            <a href="dashboard.html" class="dashboard-btn" id="mobileDashboardBtn">
+                Dashboard
+            </a>
+
+            <a href="#" class="logout-btn" id="mobileLogoutBtn">
+                Logout
+            </a>
+        </div>
+    </div>
+
+    <!-- navbar silde bar end  -->
+
+    <!-- hero star  -->
+    <section class="hero-banner">
+        <div class="hero-bg"></div>
+        <div class="hero-box show">
+            <h1>We Don’t Just Make Shoes.<br><span>We Move You Forward.</span></h1>
+            <p>Premium comfort, bold designs, and craftsmanship engineered for the modern pace of life.</p>
+            <a href="#story" class="main-btn hero-link">Explore the Collection</a>
+        </div>
+    </section>
+
+    <section id="story" class="about-story">
+        <div class="about-grid">
+            <div class="story-text">
+                <h2>Crafted for the Journey, Not Just the Destination.</h2>
+                <p>
+                    The moment you step out of your home, your shoes are the very first thing that accompanies you. But
+                    somewhere between mass production and fast fashion, the soul of a true shoe was lost. Compromising
+                    style for comfort, or enduring foot pain for the sake of fashion, unfortunately became the norm. We
+                    decided it was time for a change.
+                </p>
+                <p>
+                    Our story began with a simple purpose: to create footwear that doesn't demand a choice between
+                    aesthetics and absolute comfort. Every pair we design is a perfect blend of premium materials,
+                    ergonomic engineering, and contemporary style.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=800"
+                    alt="Shoe Craftsmanship">
+            </div>
+        </div>
+    </section>
+
+    <section class="brand-values">
+        <div class="page-wrapper">
+            <div class="heading-area">
+                <h2>Why Choose Us?</h2>
+            </div>
+            <div class="card-grid">
+                <div class="value-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <i class="fa-solid fa-shoe-prints"></i>
+                            <h3>All-Day Comfort</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Soft Cushioning Support</h3>
+                            <p>Engineered insoles that reduce pressure and keep your feet relaxed all day.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="value-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <i class="fa-solid fa-gem"></i>
+                            <h3>Premium Quality</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Built to Last</h3>
+                            <p>High-grade materials and strong stitching ensure long-lasting durability.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="value-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <i class="fa-solid fa-palette"></i>
+                            <h3>Modern Style</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Trend-Focused Designs</h3>
+                            <p>Stylish footwear designed to match every outfit effortlessly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="timeline-container">
+            <div class="heading-area">
+                <h2>Inside the Lab</h2>
+                <p>How we bring perfection to your feet</p>
+            </div>
+            <div class="timeline-track">
+                <div class="timeline-block">
+                    <h3>Step 1: The Blueprint (Design)</h3>
+                    <p>Every design starts with a pen, paper, and anatomical research to ensure perfect fitment.</p>
+                </div>
+                <div class="timeline-block">
+                    <h3>Step 2: Material Sourcing</h3>
+                    <p>Only breathable fabrics, premium leather, and high-traction soles make the cut.</p>
+                </div>
+                <div class="timeline-block">
+                    <h3>Step 3: Precision Assembly</h3>
+                    <p>Combining advanced machinery with human inspection for zero-defect production.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer-cta">
+        <div class="cta-content">
+            <h2>Ready to Find Your Perfect Pair?</h2>
+            <p>Experience the perfect blend of style, comfort, and durability today.</p>
+            <button class="main-btn cta-btn">Shop New Arrivals <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3>Step<span>ora</span><span style="color: #6a8d55;">.</span></h3>
+            <p>Premium Footwear for your daily hustle.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Stepora. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        const scrollOptions = {
+            root: null,
+            threshold: 0.15,
+            rootMargin: "0px"
+        };
+
+        const animationObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, scrollOptions);
+
+        const elementsToAnimate = document.querySelectorAll('.hero-box, .story-text, .about-image, .heading-area, .value-card, .timeline-block, .cta-content');
+
+        elementsToAnimate.forEach((element) => {
+            animationObserver.observe(element);
+        });
+    </script>
+
+    <script type="module" src="./index.js"></script>
+</body>
+
+</html>

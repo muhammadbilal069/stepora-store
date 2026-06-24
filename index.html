@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stepora | Premium Footwear & Sneakers</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <script defer type="module" src="app.js"></script>
+  <script type="module" src="index.js"></script>
+
+</head>
+
+<body>
+
+  <div class="top-bar">
+    <span id="welcome-msg"></span>
+  </div>
+
+  <nav class="navbar">
+    <div class="logo">
+      <h2>Step<span>ora</span><span style="color: #6a8d55;">.</span></h2>
+    </div>
+
+    <div class="menu-toggle" id="menuToggle">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li>
+        <a href="cart.html" class="cart-icon-wrapper">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span id="cart-count">0</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="nav-buttons">
+      <a href="login.html" class="login" id="loginBtn">
+        <i class="fa-solid fa-user"></i> Login
+      </a>
+
+      <a href="signup.html" class="signup-btn" id="signupBtn">
+        Sign Up
+      </a>
+
+      <a href="dashboard.html" class="dashboard-btn" id="dashboardBtn" style="display:none;">
+        Dashboard
+      </a>
+
+      <a href="#" class="logout-btn" id="logoutBtn" style="display:none;">
+        Logout
+      </a>
+
+    </div>
+  </nav>
+
+
+  <!-- side bar code  -->
+
+  <div class="mobile-sidebar" id="mobileSidebar">
+
+    <div class="sidebar-header">
+      <h2>Step<span>ora</span></h2>
+
+      <i class="fa-solid fa-xmark" id="closeMenu"></i>
+    </div>
+
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="contact.html">Contact</a></li>
+
+      <li>
+        <a href="cart.html" class="cart-icon-wrapper">
+          <i class="fa-solid fa-cart-shopping"></i>
+          Cart <span id="mobile-cart-count">0</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-buttons">
+
+      <a href="login.html" class="login" id="mobileLoginBtn">
+        <i class="fa-solid fa-user"></i> Login
+      </a>
+
+      <a href="signup.html" class="signup-btn" id="mobileSignupBtn">
+        Sign Up
+      </a>
+
+      <a href="dashboard.html" class="dashboard-btn" id="mobileDashboardBtn">
+        Dashboard
+      </a>
+
+      <a href="#" class="logout-btn" id="mobileLogoutBtn">
+        Logout
+      </a>
+    </div>
+  </div>
+
+  <!-- navbar silde bar end  -->
+
+  <!-- Hero Section -->
+  <section class="hero">
+  </section>
+
+  <!-- Products Section -->
+  <section class="products">
+    <h2> Our Products</h2>
+    <p class="products-subtitle">Step into luxury with our exclusive VIP footwear collection. Crafted for elite comfort,
+      premium durability, and your daily hustle.</p>
+    <div class="products-container" id="products-container">
+    </div>
+  </section>
+  <!-- <div id="products-container"></div> -->
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <h3>Step<span>ora</span><span style="color: #6a8d55;">.</span></h3>
+      <p>Premium Footwear for your daily hustle.</p>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Stepora. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="module" src="products.js"></script>
+</body>
+
+</html>

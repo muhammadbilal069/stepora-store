@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Stepora</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Core Configurations */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0b0c10;
+            /* THEME FIXED: Pure Dark Background */
+            color: #fff;
+            /* THEME FIXED: White Text */
+            overflow-x: hidden;
+        }
+
+        /* 1. MAIN CONTACT SECTION WRAPPER */
+        .contact-section {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px;
+            min-height: 100vh;
+        }
+
+        /* Title Area with built-in fade animation */
+        .contact-header {
+            text-align: center;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .main-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            margin-bottom: 15px;
+            color: #6a8d55;
+            /* THEME FIXED: Brand Green Header */
+        }
+
+        .sub-title {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            /* Light gray for dark bg readability */
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Contact Box Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 40% 60%;
+            background-color: #11141a;
+            /* THEME FIXED: Secondary Dark Box */
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(106, 141, 85, 0.2);
+            /* THEME FIXED: Subtle Green Border */
+        }
+
+        /* 2. SIDEBAR WITH INFO (Built-in slide-left animation) */
+        .contact-sidebar {
+            background: linear-gradient(135deg, #1a1e26 0%, #0b0c10 100%);
+            /* THEME FIXED: Dark Luxury Gradient */
+            color: #ffffff;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.8s ease;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-sidebar h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .sidebar-desc {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .meta-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .meta-item i {
+            font-size: 1.3rem;
+            color: #6a8d55;
+            /* THEME FIXED: Icons turn Green */
+            width: 24px;
+            text-align: center;
+        }
+
+        .meta-item span {
+            font-size: 1rem;
+            color: #e2e8f0;
+        }
+
+        .social-wrapper {
+            display: flex;
+            gap: 15px;
+            margin-top: 50px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-link:hover {
+            background-color: #6a8d55;
+            /* THEME FIXED: Hover turns Green */
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(106, 141, 85, 0.4);
+        }
+
+        /* 3. FORM CONTAINER (Built-in slide-right animation) */
+        .form-area {
+            padding: 50px;
+            background-color: #11141a;
+            /* THEME FIXED: Dark Box background */
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.8s ease;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .input-field,
+        .textarea-field {
+            width: 100%;
+            padding: 14px 20px;
+            border: 2px solid #2d343f;
+            /* THEME FIXED: Soft Dark Border */
+            border-radius: 12px;
+            font-size: 1rem;
+            color: #fff;
+            /* THEME FIXED: White Input Text */
+            background-color: #1a1e26;
+            /* THEME FIXED: Rich Dark Inputs */
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus,
+        .textarea-field:focus {
+            border-color: #6a8d55;
+            /* THEME FIXED: Green Border on Click */
+            background-color: #1a1e26;
+            box-shadow: 0 0 0 4px rgba(106, 141, 85, 0.15);
+        }
+
+        .textarea-field {
+            resize: none;
+        }
+
+        /* Button Styling */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: auto;
+            padding: 16px 40px;
+            background-color: #6a8d55;
+            /* THEME FIXED: Solid Green Premium Button */
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(106, 141, 85, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: #84af6d;
+            /* Soft green highlight */
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(106, 141, 85, 0.4);
+        }
+
+        /* GLOBAL ACTIVATION CLASS FOR JAVASCRIPT */
+        .active {
+            opacity: 1 !important;
+            transform: translate(0) !important;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 968px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-sidebar {
+                gap: 40px;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-sidebar,
+            .form-area {
+                padding: 30px 20px;
+            }
+
+            .main-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+    <span id="welcome-msg"></span>
+  </div>
+
+      <nav class="navbar">
+    <div class="logo">
+      <h2>Step<span>ora</span><span style="color: #6a8d55;">.</span></h2>
+    </div>
+
+    <div class="menu-toggle" id="menuToggle">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li>
+        <a href="cart.html" class="cart-icon-wrapper">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span id="cart-count">0</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="nav-buttons">
+      <a href="login.html" class="login" id="loginBtn">
+        <i class="fa-solid fa-user"></i> Login
+      </a>
+
+      <a href="signup.html" class="signup-btn" id="signupBtn">
+        Sign Up
+      </a>
+
+      <a href="dashboard.html" class="dashboard-btn" id="dashboardBtn" style="display:none;">
+        Dashboard
+      </a>
+
+      <a href="#" class="logout-btn" id="logoutBtn" style="display:none;">
+        Logout
+      </a>
+
+    </div>
+  </nav>
+
+<!-- side bar code  -->
+
+  <div class="mobile-sidebar" id="mobileSidebar">
+
+  <div class="sidebar-header">
+    <h2>Step<span>ora</span></h2>
+
+    <i class="fa-solid fa-xmark" id="closeMenu"></i>
+  </div>
+
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+
+  <div class="sidebar-buttons">
+
+  <a href="login.html" class="login" id="mobileLoginBtn">
+    <i class="fa-solid fa-user"></i> Login
+  </a>
+
+  <a href="signup.html" class="signup-btn" id="mobileSignupBtn">
+    Sign Up
+  </a>
+
+  <a href="dashboard.html" class="dashboard-btn" id="mobileDashboardBtn">
+    Dashboard
+  </a>
+
+  <a href="#" class="logout-btn" id="mobileLogoutBtn">
+    Logout
+  </a>
+</div>
+</div>
+<!-- navabr side bar ennd  -->
+
+    <section class="contact-section">
+
+        <div class="contact-header">
+            <h1 class="main-title">Get In Touch</h1>
+            <p class="sub-title">Have questions about sizing, shipping, or orders? Drop us a line.</p>
+        </div>
+
+        <div class="contact-grid">
+
+            <div class="contact-sidebar">
+                <div class="sidebar-inner">
+                    <h2>Contact Information</h2>
+                    <p class="sidebar-desc">Fill out the form and our support team will reach out to you within 24
+                        hours.</p>
+
+                    <div class="meta-list">
+                        <div class="meta-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>+92 300 4234567</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>Stepora@gmail.com</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>123 Elite Street, Phase 6, DHA, Karachi</span>
+                        </div>
+                    </div>
+
+                    <div class="social-wrapper">
+                        <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-area">
+                <form id="contactForm" class="main-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" class="input-field" required placeholder="John">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" class="input-field" required placeholder="Doe">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emailAddress">Email Address</label>
+                        <input type="email" id="emailAddress" class="input-field" required
+                            placeholder="john@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subjectLine">Subject</label>
+                        <input type="text" id="subjectLine" class="input-field" required
+                            placeholder="Order Tracking / Size Exchange">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userMessage">Your Message</label>
+                        <textarea id="userMessage" class="textarea-field" rows="5" required
+                            placeholder="Write your query here..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        Send Message <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+             <h3>Step<span>ora</span><span style="color: #6a8d55;">.</span></h3>
+            <p>Premium Footwear for your daily hustle.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Stepora. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="./index.js"></script>
+    <script>
+        // 1. Scroll Animation Logic
+        const scrollObserverOptions = {
+            root: null,
+            threshold: 0.1,
+            rootMargin: "0px"
+        };
+
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, scrollObserverOptions);
+
+        const elementsToTrigger = document.querySelectorAll('.contact-header, .contact-sidebar, .form-area');
+        elementsToTrigger.forEach((element) => {
+            scrollObserver.observe(element);
+        });
+
+        // 2. Form Submission & Loading Animation Logic
+        const contactForm = document.getElementById('contactForm');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const submitButton = document.querySelector('.btn-primary');
+                const originalText = submitButton.innerHTML;
+
+                submitButton.innerHTML = 'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
+                submitButton.style.pointerEvents = 'none';
+                submitButton.style.opacity = '0.7';
+
+                setTimeout(() => {
+                    alert('Thank you! Your message has been sent successfully. We will contact you soon.');
+                    contactForm.reset();
+
+                    submitButton.innerHTML = originalText;
+                    submitButton.style.pointerEvents = 'auto';
+                    submitButton.style.opacity = '1';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+
+</html>
