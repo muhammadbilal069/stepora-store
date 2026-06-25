@@ -10,11 +10,22 @@
 
     <style>
         /* RESET & BASE STYLES */
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
+        }
+
+        .navbar {
+            position: sticky;
         }
 
         body {
@@ -53,7 +64,7 @@
         .hero-banner {
             height: auto;
             min-height: 70vh;
-            padding: 50px 0;
+            padding: 40px 0;
         }
 
         .hero-bg {
@@ -62,7 +73,6 @@
             background: linear-gradient(135deg, #11141a 0%, #0b0c10 100%);
             /* THEME FIXED: Dark Gradient */
             opacity: 1;
-            z-index: -1;
         }
 
         .hero-box {
@@ -78,7 +88,7 @@
         .hero-box h1 {
             font-size: 3.5rem;
             font-weight: 900;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-transform: uppercase;
             line-height: 1.2;
         }
@@ -114,7 +124,7 @@
             background-color: #0b0c10;
         }
 
-        .about-grid {
+        /* .about-grid {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
@@ -123,7 +133,22 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 50px;
             align-items: center;
+        } */
+
+
+        .about-grid {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+            /* <-- add this */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
         }
+
 
         .story-text {
             opacity: 0;
@@ -396,6 +421,10 @@
 
 
         @media (max-width: 768px) {
+            .hero-banner {
+                min-height: auto;
+                padding: 30px 15px;
+            }
 
             .hero-box h1 {
                 font-size: 2.2rem;
@@ -417,10 +446,32 @@
             }
         }
 
+
+
         .page-wrapper,
         .about-grid {
             padding-left: 15px !important;
             padding-right: 15px !important;
+        }
+
+        .about-grid,
+        .card-grid {
+            width: 100%;
+
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        @media (max-width:768px) {
+
+            .about-image {
+                transform: none;
+            }
+
+            .story-text {
+                transform: none;
+            }
+
         }
     </style>
 </head>
@@ -643,7 +694,7 @@
         </div>
     </footer>
 
-
+    <script type="module" src="./index.js"></script>
     <script>
         const scrollOptions = {
             root: null,
@@ -666,7 +717,7 @@
         });
     </script>
 
-    <script type="module" src="./index.js"></script>
+
 </body>
 
 </html>
